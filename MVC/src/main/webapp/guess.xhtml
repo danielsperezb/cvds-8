@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+   <h:head>
+      <title>Juego de adivinanza</title>
+
+      <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+         }
+         #guess_form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            margin-top: 50px;
+         }
+         #guess_form p {
+            margin: 10px 0;
+         }
+         #guess_form .card {
+            margin-top: 30px;
+            width: 100%;
+         }
+         #guess_form .card table {
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+         }
+         #guess_form .card th, #guess_form .card td {
+            padding: 10px;
+            border: 1px solid #ccc;
+         }
+         #guess_form .card th {
+            background-color: #f5f5f5;
+         }
+         #guess_form input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+         }
+         #guess_form button {
+            background-color: #4CAF50;
+            color: #fff;
+            border-radius: 5px;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+         }
+         #guess_form button:hover {
+            background-color: #3e8e41;
+         }
+      </style>
+
+      
+   </h:head>
+   <h:body>
+      <h:form id="guess_form">
+         <p:outputLabel value="Número a adivinar: "/>
+         <p:outputLabel value="Intenta adivinar un número entre 1 y 10:" />
+         <p:inputText id="guess" value="#{guessBean.guessNumber}" />
+         <p:commandButton value="Adivinar" update="guess_form" actionListener="#{guessBean.guess}" />
+         <p:commandButton value="Reiniciar" update="guess_form" actionListener="#{guessBean.restart}" />
+         <p:outputLabel value="Número de intentos: #{guessBean.guessesMade}" />
+         <p:outputLabel value="Estado del juego: #{guessBean.gameState}" />
+         <p:outputLabel value="Premio acumulado: $#{guessBean.prize}" />
+         <div class="card"> 
+            <p:dataTable var="lista" value="#{guessBean.lista}">
+                <p:column headerText="Intentos">
+                    <h:outputText value="#{lista}" />
+                </p:column>
+            </p:dataTable>
+        </div>
+      </h:form>
+   </h:body>
+</html>
+

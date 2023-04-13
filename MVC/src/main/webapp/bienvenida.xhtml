@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+      <title>Bienvenida al juego</title>
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+         }
+         h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #007bff;
+         }
+         .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+         }
+         .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+         }
+         label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+         }
+         input[type=text] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            margin-bottom: 10px;
+         }
+         input[type=submit] {
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+         }
+         input[type=submit]:hover {
+            background-color: #0069d9;
+         }
+      </style>
+      
+      
+   </h:head>
+   <h:body>
+      <h:form prependId="false">
+         <h:panelGrid columns="2">
+            <h:outputLabel value="Ingrese su nombre: " for="userName" />
+            <h:inputText id="userName" value="#{userBean.userName}" />
+               
+            <h:outputText value="" />
+            <h:commandButton value="Iniciar" action="guess.xhtml" actionListener="#{userBean.ingresar}"/>
+         </h:panelGrid>
+      </h:form>
+   </h:body>
+</html>
